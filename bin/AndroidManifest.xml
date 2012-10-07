@@ -1,0 +1,54 @@
+<!--
+  Copyright (c) 2012 rob@theUltimateLabs.com.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the GNU Public License v3.0
+  which accompanies this distribution, and is available at
+  http://www.gnu.org/licenses/gpl.html
+  
+  Contributors:
+      rob@theUltimateLabs.com - initial API and implementation
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.theultimatelabs.frame"
+    android:versionCode="2"
+    android:versionName="1.0.1" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="15" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    
+    <application
+        android:icon="@drawable/photoframeicon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".FrameActivity"
+            android:label="Frame" 
+             android:theme="@android:style/Theme.Translucent.NoTitleBar"
+             android:screenOrientation="sensor">
+        </activity>
+        
+        <activity
+            android:name=".FrameSettingsActivity"
+            android:label="Picture Frame Settings" >
+            <intent-filter>
+                            <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <broadcastReceiver android:name=".FrameReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </broadcastReceiver>
+
+        <service android:name=".FrameService" />
+    </application>
+
+</manifest>
